@@ -63,7 +63,67 @@ const Hero = () => {
           </div>
           {/* Images section */}
           <div className="flex justify-center">
-            {/* 保留现有代码 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="relative"
+            >
+              {/* 主图片 */}
+              <img 
+                src={HeroPng} 
+                alt="AI文本检测" 
+                className="w-full max-w-lg object-contain z-10 relative"
+              />
+              
+              {/* 装饰元素 */}
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-purple-100 rounded-full z-0"></div>
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-blue-100 rounded-full z-0"></div>
+              
+              {/* 悬浮卡片 - AI检测结果 */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1 }}
+                className="absolute top-10 -right-10 bg-white p-4 rounded-lg shadow-lg z-20 w-48"
+              >
+                <div className="flex items-center mb-2">
+                  <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                  <span className="text-sm font-medium">AI生成概率</span>
+                </div>
+                <div className="text-2xl font-bold text-red-500 mb-1">87.5%</div>
+                <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-red-500 rounded-full" style={{ width: '87.5%' }}></div>
+                </div>
+              </motion.div>
+              
+              {/* 悬浮卡片 - 检测特征 */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
+                className="absolute bottom-20 -left-12 bg-white p-3 rounded-lg shadow-lg z-20 w-40"
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <FaRobot className="text-purple-500" />
+                  <span className="text-xs font-medium">检测特征</span>
+                </div>
+                <ul className="text-xs space-y-1 text-gray-600">
+                  <li className="flex items-center gap-1">
+                    <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+                    <span>词汇多样性</span>
+                  </li>
+                  <li className="flex items-center gap-1">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+                    <span>句法结构</span>
+                  </li>
+                  <li className="flex items-center gap-1">
+                    <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full"></div>
+                    <span>语义连贯性</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
